@@ -1,4 +1,12 @@
 Box::Application.routes.draw do
+  #pages
+  get "pages/home"
+  get "pages/game"
+  get "pages/score"
+  
+  match '/home', :to => 'pages#home'
+  match '/game', :to => 'pages#game'
+  match '/score', :to => 'pages#score'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +56,7 @@ Box::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'pages#home'
 
   # See how all your routes lay out with "rake routes"
 

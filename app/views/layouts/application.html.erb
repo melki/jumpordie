@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Box</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang='en'>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= titre %></title>
+    <%= csrf_meta_tag %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
 
-<%= yield %>
 
-</body>
+  </head>
+  <body>
+    <div class="container-narrow">
+      <div class="masthead">
+            <ul class="nav nav-pills pull-right">
+              <li <%= active('Home') %>><%= link_to "Home", home_path  %></li>
+              <li <%= active('Game') %>><%= link_to "Game", game_path  %></li>
+              <li <%= active('Score') %>><%= link_to "Score", score_path  %></li>
+              </ul>
+          <h3 class="muted" >Melki</h3>
+      </div>
+      <hr>  
+      <div class="jumbotron"> 
+        <%= yield %>
+      </div>
+      <hr>
+      <div class="footer">
+        <p>&copy; Melki 2013</p>
+      </div>
+    <%= javascript_include_tag "application" %>
+    <%= debug(params) if Rails.env.development? %>
+    </div> <!--/.container -->
+  </body>
 </html>
