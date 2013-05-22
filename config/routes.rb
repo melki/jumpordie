@@ -3,10 +3,12 @@ Box::Application.routes.draw do
   get "pages/home"
   get "pages/game"
   get "pages/score"
+
   
   match '/home', :to => 'pages#home'
   match '/game', :to => 'pages#game'
   match '/score', :to => 'pages#score'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
