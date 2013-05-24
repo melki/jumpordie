@@ -1,18 +1,37 @@
-{   "nbLvl": 1,
+{   "nbLvl": 2,
     "lvl":[
             {
                 "ciel":100,
                 "sol":300,
-                "speed":2,
+                "speed":0.5,
                 "c1":"#0B1C26",
-                "c2":"#46708C"
+                "c2":"#46708C",
+                "gravity":0.5,
+                "nbObstacles":2,
+                "obstacles":[
+                {
+                    "posX":400,
+                    "posY":180,
+                    "width":40,
+                    "height":80
+                },
+                {
+                    "posX":200,
+                    "posY":260,
+                    "width":40,
+                    "height":80
+                }
+                ]
             },
             {
                 "ciel":100,
-                "sol":300,
+                "sol":350,
                 "speed":1,
-                "c1":"#0B1C26",
-                "c2":"#46708C"
+                "c2":"#000000",
+                "c1":"#FFFFFF",
+                "gravity":0.7,
+                "nbObstacles":0,
+                "obstacles":[]
             }
     ]
  }   
