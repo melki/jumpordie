@@ -1,7 +1,12 @@
 function load() {
+
+
+
     // fonction servant à animer le tout (mieux que setIntervalle)
     window.requestAnimFrame = (function () {
-           return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+           return window.requestAnimationFrame || window.webkitRequestAnimationFrame 
+           || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame 
+           || function (callback) {
            window.setTimeout(callback, 20)
     }})();
   
@@ -9,11 +14,14 @@ function load() {
 //constante
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "black";
+    ctx.font = "40px Tahoma,Calibri,Geneva,Arial";
+    ctx.fillText('Press enter to begin', 200, 180);
 var width = canvas.width;
 var height = canvas.height;
 var lvl = 0;
 var baseSpeed = 10;
-var cube,nbLvl,inJump,boom=0;
+var cube,nbLvl,inJump,i,j,boom=0;
 var c1 = new Array();
 var c2 = new Array();
 var speed = new Array();
@@ -31,7 +39,7 @@ var debris = new Array();
 $.getJSON('lvl.json', function(data) 
 {
     nbLvl = data.nbLvl;
-    for (var i = 0; i < nbLvl; i++) 
+    for (i = 0; i < nbLvl; i++) 
     {
        
         c1[i] = data.lvl[i].c1;
@@ -44,7 +52,7 @@ $.getJSON('lvl.json', function(data)
         if(nbObstacles[i] != 0) 
         {
             obstacles[i]=new Array();
-            for (var j = 0; j < nbObstacles; j++) 
+            for (j = 0; j < nbObstacles[i]; j++) 
             {
                 obstacles[i][j]=
                 {
@@ -110,7 +118,8 @@ function collisionsObstacles(obstacles,nb)
 {
     for (i = 0; i < nb; i++) 
     {
-        if (!((cube.posX>=(obstacles[i].posX+obstacles[i].width) || ((cube.posY + 20 )<=obstacles[i].posY) || (cube.posY>=(obstacles[i].posY+obstacles[i].height)) || ((cube.posX+20)<=obstacles[i].posX))))
+        if (!((cube.posX>=(obstacles[i].posX+obstacles[i].width) || ((cube.posY + 20 )<=obstacles[i].posY)
+         || (cube.posY>=(obstacles[i].posY+obstacles[i].height)) || ((cube.posX+20)<=obstacles[i].posX))))
         {
            avantExplosion();
         }
@@ -149,7 +158,7 @@ function explosion()
         debris[j].posY+=Math.random()*20-10;
     };
     for (j = 0; j < 16; j++) {
-        ctx.fillStyle = c2;
+        ctx.fillStyle = c2[lvl];
         ctx.fillRect(debris[j].posX,debris[j].posY,5,5);
     };
        
@@ -159,7 +168,7 @@ function infos()
 {
     ctx.fillStyle = c1[lvl];
     ctx.font = "20px Tahoma,Calibri,Geneva,Arial";
-    ctx.fillText(' || tries : '+ nbTry, 20, 20);
+    ctx.fillText('tries : '+ nbTry, 20, 20);
 }
 
 function createCube(sol,c1,speed) 
@@ -188,8 +197,8 @@ function drawObstacles(obstacles,nb)
 {
     for (i = 0; i < nb; i++)
     {
-           
-        ctx.fillStyle = c2;
+
+        ctx.fillStyle = c2[lvl];
         ctx.fillRect(obstacles[i].posX,obstacles[i].posY,obstacles[i].width,obstacles[i].height);
          
     }
@@ -227,7 +236,7 @@ function jump()
 
 function drawCube(c2)
 {
-    ctx.fillStyle = c2;
+    ctx.fillStyle = c2[lvl];
     if (inJump==0)
     {
 
