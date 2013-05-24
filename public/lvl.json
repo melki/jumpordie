@@ -1,4 +1,4 @@
-{   "nbLvl": 3,
+{   "nbLvl": 4,
     "lvl":[
             {
                 "ciel":100,
@@ -33,6 +33,23 @@
                 "ciel":100,
                 "sol":300,
                 "speed":1,
+                "c2":"#3827D3",
+                "c1":"#FFF126",
+                "gravity":2,
+                "nbObstacles":1,
+                "obstacles":[
+                {
+                    "posX":400,
+                    "posY":220,
+                    "width":80,
+                    "height":80
+                }
+                ]
+            },
+            {
+                "ciel":100,
+                "sol":300,
+                "speed":1,
                 "c2":"#100025",
                 "c1":"#259141",
                 "gravity":0.7,
@@ -53,14 +70,27 @@
                 "c2":"#3827D3",
                 "c1":"#FFF126",
                 "gravity":2,
-                "nbObstacles":1,
+                "nbObstacles":3,
                 "obstacles":[
                 {
                     "posX":400,
                     "posY":220,
                     "width":80,
                     "height":80
+                },
+                {
+                    "posX":150,
+                    "posY":220,
+                    "width":80,
+                    "height":80
+                },
+                {
+                    "posX":620,
+                    "posY":220,
+                    "width":80,
+                    "height":80
                 }
+
                 ]
             }
     ]
