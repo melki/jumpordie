@@ -110,6 +110,10 @@ function animate()
         {
             clearCanvas(ctx);
             drawBackground(ciel[lvl],sol[lvl],c1[lvl],c2[lvl]);
+            if (nbObstacles[lvl]!=0)
+            {
+                drawObstacles(obstacles[lvl],nbObstacles[lvl]);
+            }
             explosion();
             infos();
             if (frame>20) {boom=0}
