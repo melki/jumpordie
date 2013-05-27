@@ -1,5 +1,65 @@
-{   "nbLvl": 4,
+{   "nbLvl": 6,
     "lvl":[
+            {
+                "ciel":100,
+                "sol":300,
+                "speed":1,
+                "c1":"#B92EEB",
+                "c2":"#048E00",
+                "gravity":2,
+                "nbObstacles":1,
+                "obstacles":[
+                {
+                    "posX1":770,
+                    "posX2":0,
+                    "posY1":270,
+                    "posY2":270,
+                    "width":30,
+                    "height":30,
+                    "frame":30
+                }
+                ]
+            },
+
+            {
+                "ciel":100,
+                "sol":300,
+                "speed":0.7,
+                "c2":"#FF7626",
+                "c1":"#068CCA",
+                "gravity":0.7,
+                "nbObstacles":3,
+                "obstacles":[
+                {
+                    "width":50,
+                    "height":50,
+                    "posX1":400,
+                    "posY1":250,
+                    "posX2":400,
+                    "posY2":250,
+                    "frame":50
+                },
+                {
+                    "posX1":650,
+                    "posX2":650,
+                    "posY1":100,
+                    "posY2":240,
+                    "width":60,
+                    "height":60,
+                    "frame":30
+                },
+                {
+                    "posX1":250,
+                    "posX2":250,
+                    "posY1":100,
+                    "posY2":240,
+                    "width":60,
+                    "height":60,
+                    "frame":30
+                }
+                ]
+                
+            },
             {
                 "ciel":100,
                 "sol":300,
@@ -10,25 +70,36 @@
                 "nbObstacles":3,
                 "obstacles":[
                 {
-                    "posX":400,
-                    "posY":180,
                     "width":40,
-                    "height":80
+                    "height":80,
+                    "posX1":260,
+                    "posY1":180,
+                    "posX2":530,
+                    "posY2":180,
+                    "frame":50
                 },
                 {
                     "posX":600,
-                    "posY":260,
+                    "posX1":600,
+                    "posX2":600,
+                    "posY1":260,
+                    "posY2":260,
                     "width":100,
-                    "height":80
+                    "height":80,
+                    "frame":50
                 },
                 {
-                    "posX":200,
-                    "posY":260,
+                    "posX1":200,
+                    "posX2":200,
+                    "posY1":260,
+                    "posY2":260,
                     "width":40,
-                    "height":80
+                    "height":80,
+                    "frame":50
                 }
                 ]
             },
+
             {
                 "ciel":100,
                 "sol":300,
@@ -39,13 +110,18 @@
                 "nbObstacles":1,
                 "obstacles":[
                 {
-                    "posX":400,
-                    "posY":220,
+                    "posX1":400,
+                    "posX2":400,
+                    "posY1":220,
+                    "posY2":220,
                     "width":80,
-                    "height":80
+                    "height":80,
+                    "frame":50
                 }
                 ]
             },
+
+           
             {
                 "ciel":100,
                 "sol":300,
@@ -56,13 +132,19 @@
                 "nbObstacles":1,
                 "obstacles":[
                 {
-                    "posX":550,
-                    "posY":220,
+                    "posX1":550,
+                    "posX2":550,
+                    "posY1":220,
+                    "posY2":220,
                     "width":70,
-                    "height":60
+                    "height":60,
+                    "frame":50
                 }
                 ]
             },
+
+         
+
             {
                 "ciel":100,
                 "sol":300,
@@ -73,22 +155,31 @@
                 "nbObstacles":3,
                 "obstacles":[
                 {
-                    "posX":400,
-                    "posY":220,
+                    "posX1":400,
+                    "posX2":400,
+                    "posY1":220,
+                    "posY2":220,
                     "width":80,
-                    "height":80
+                    "height":80,
+                    "frame":50
                 },
                 {
-                    "posX":150,
-                    "posY":220,
+                    "posX1":150,
+                    "posX2":150,
+                    "posY1":220,
+                    "posY2":220,
                     "width":80,
-                    "height":80
+                    "height":80,
+                    "frame":50
                 },
                 {
-                    "posX":620,
-                    "posY":220,
+                    "posX1":620,
+                    "posX2":620,
+                    "posY1":220,
+                    "posY2":220,
                     "width":80,
-                    "height":80
+                    "height":80,
+                    "frame":50
                 }
 
                 ]

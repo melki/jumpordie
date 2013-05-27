@@ -21,7 +21,8 @@ var width = canvas.width;
 var height = canvas.height;
 var lvl = 0;
 var baseSpeed = 10;
-var cube,nbLvl,inJump,i,j,boom=0;
+var cube,nbLvl,inJump,i,j,boom=0,play=0;
+var audio = document.getElementById('audio');
 var c1 = new Array();
 var c2 = new Array();
 var speed = new Array();
@@ -34,6 +35,7 @@ var creation=0;
 var stopTheGame = 0;
 var nbTry = 0;
 var frame = 0;
+var udontcare = 0;
 var debris = new Array();
  
 $.getJSON('lvl.json', function(data) 
@@ -54,15 +56,24 @@ $.getJSON('lvl.json', function(data)
             obstacles[i]=new Array();
             for (j = 0; j < nbObstacles[i]; j++) 
             {
+                udontcare = data.lvl[i].obstacles[j].frame;
                 obstacles[i][j]=
                 {
-                    "posX":data.lvl[i].obstacles[j].posX,
-                    "posY":data.lvl[i].obstacles[j].posY,
+                    "posX":data.lvl[i].obstacles[j].posX1,
+                    "posY":data.lvl[i].obstacles[j].posY1,
                     "width":data.lvl[i].obstacles[j].width,
-                    "height":data.lvl[i].obstacles[j].height
+                    "height":data.lvl[i].obstacles[j].height,
+                    "posX1":data.lvl[i].obstacles[j].posX1,
+                    "posX2":data.lvl[i].obstacles[j].posX2,
+                    "posY1":data.lvl[i].obstacles[j].posY1,
+                    "posY2":data.lvl[i].obstacles[j].posY2,
+                    "frame":data.lvl[i].obstacles[j].frame,
+                    "pasX":Math.abs((data.lvl[i].obstacles[j].posX1-data.lvl[i].obstacles[j].posX2)/udontcare),
+                    "pasY":Math.abs((data.lvl[i].obstacles[j].posY1-data.lvl[i].obstacles[j].posY2)/udontcare)
                 };
             }   
         }
+        
     };
     animate();
 });
@@ -174,7 +185,8 @@ function infos()
 function createCube(sol,c1,speed) 
 {
     frame=0;
-    inJump=0;    
+    inJump=0;
+
     cube = {
             "color": c1,
             "posX": 0,
@@ -200,9 +212,23 @@ function drawObstacles(obstacles,nb)
 
         ctx.fillStyle = c2[lvl];
         ctx.fillRect(obstacles[i].posX,obstacles[i].posY,obstacles[i].width,obstacles[i].height);
+       
+        if (obstacles[i].posX>Math.max(obstacles[i].posX1,obstacles[i].posX2) ||
+             obstacles[i].posX<Math.min(obstacles[i].posX1,obstacles[i].posX2))
+        {
+            obstacles[i].pasX=-obstacles[i].pasX;
+        }
+        if (obstacles[i].posY>Math.max(obstacles[i].posY1,obstacles[i].posY2) ||
+             obstacles[i].posY<Math.min(obstacles[i].posY1,obstacles[i].posY2))
+        {
+            obstacles[i].pasY=-obstacles[i].pasY;
+        }
+        obstacles[i].posX+=obstacles[i].pasX;
+        obstacles[i].posY+=obstacles[i].pasY;
          
     }
 }
+
 
 function moveCube()
 {
@@ -277,6 +303,9 @@ function keydownControl(e)
     {
         case 13:
             stopTheGame=Math.abs(stopTheGame - 1);
+            play=Math.abs(play - 1);
+            if (play) {audio.play();}
+            else {audio.pause();}
         break;
         case 32:
             jump();
