@@ -4,8 +4,8 @@
                 "ciel":100,
                 "sol":300,
                 "speed":1,
-                "c1":"#B92EEB",
-                "c2":"#048E00",
+                "c1":"#0200D0",
+                "c2":"#45F100",
                 "gravity":2,
                 "nbObstacles":1,
                 "obstacles":[
