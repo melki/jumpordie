@@ -9,5 +9,7 @@ class PagesController < ApplicationController
 
   def score
   	@titre = "Score"
+  	@pseudo = params[:pseudo]
+  	@tries = params[:tries]
   end
 end

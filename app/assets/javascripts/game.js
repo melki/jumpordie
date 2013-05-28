@@ -289,8 +289,17 @@ function testArrive()
     }
     if(lvl>=nbLvl)
     {
-        creation=0;
-        lvl=0;
+        //audio.pause();
+        stopTheGame=0;
+        var div = document.getElementById('whereItHappens');
+        div.innerHTML = "<br><br><p>Well done, only "+nbTry+" tries !</p>"+
+        "<p>Now, enter your pseudo and then click on <code>submit</code></p>"+
+        "<form action='pages/score' method='POST'>"+
+            "<label  for='inputPseudo'>Pseudo</label>"+
+            "<input type='text' name='pseudo' id='inputPseudo' placeholder='Pseudo'><br>"+
+            "<input type='hidden' id='inputTries' name='tries' value="+nbTry+"><br>"+
+            "<button type='submit' class='btn btn-success'>Submit</button>"+
+        "</form>";
     }    
 }
 
@@ -315,17 +324,20 @@ function keydownControl(e)
             jump();
         break;
     }
-    if (e.preventDefault) 
+    if(stopTheGame!=0)
     {
-        e.preventDefault();
-        e.stopPropagation();
-    } 
-    else 
-    {
-        e.returnValue = false;
-        e.cancelBubble = true;
+        if (e.preventDefault) 
+        {
+            e.preventDefault();
+            e.stopPropagation();
+        } 
+        else 
+        {   
+            e.returnValue = false;
+            e.cancelBubble = true;
+        }
+        return false;
     }
-    return false;
     }
 
 

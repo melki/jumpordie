@@ -4,7 +4,8 @@ Box::Application.routes.draw do
   get "pages/game"
   get "pages/score"
 
-  
+  post "pages/score"
+
   match '/home', :to => 'pages#home'
   match '/game', :to => 'pages#game'
   match '/score', :to => 'pages#score'

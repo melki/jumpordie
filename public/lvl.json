@@ -27,7 +27,7 @@
                 "speed":0.7,
                 "c2":"#FF7626",
                 "c1":"#068CCA",
-                "gravity":0.7,
+                "gravity":0.6,
                 "nbObstacles":3,
                 "obstacles":[
                 {
