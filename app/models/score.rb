@@ -15,6 +15,6 @@ class Score < ActiveRecord::Base
    	validates :pseudo, :presence => true,
    						:length   => { :maximum => 50 }
 
-   	validates :tries, :presence => true
+   	validates :tries, :presence => true,:numericality => { :only_integer => true }
    	validates_with Validation
 end

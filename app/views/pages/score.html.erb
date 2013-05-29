@@ -1,9 +1,12 @@
 <h1>Leaderboard</h1>
-
- <% nouveau = Score.new(:pseudo => @pseudo, :tries => @tries) %>
- <% nouveau.save %>
- <% score = Score.order("tries ") %>
- <% i=1 %>
+  <% if(request.referer) %>
+  <% if(request.referer.split('/').last=="game") %>
+  <% nouveau = Score.new(:pseudo => @pseudo, :tries => @tries) %>
+  <% nouveau.save %>
+  <% end %>
+  <% end %>
+  <% score = Score.order("tries ") %>
+  <% i=1 %>
   <table class="table table-striped">
               <thead>
                 <tr>

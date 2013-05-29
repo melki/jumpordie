@@ -10,6 +10,6 @@ class PagesController < ApplicationController
   def score
   	@titre = "Score"
   	@pseudo = params[:pseudo]
-  	@tries = params[:tries]
+  	@tries = params[:tries78]
   end
 end
