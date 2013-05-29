@@ -31,6 +31,8 @@ var obstacles = new Array();
 var gravity = new Array();
 var sol = new Array();
 var ciel = new Array();
+var stopY = new Array();
+var stopX = new Array();
 var creation=0;
 var stopTheGame = 0;
 var nbTry = 0;
@@ -72,6 +74,7 @@ $.getJSON('lvl.json', function(data)
                     "pasX":Math.abs((data.lvl[i].obstacles[j].posX1-data.lvl[i].obstacles[j].posX2)/udontcare),
                     "pasY":Math.abs((data.lvl[i].obstacles[j].posY1-data.lvl[i].obstacles[j].posY2)/udontcare),
                     "pastille":data.lvl[i].obstacles[j].pastille,
+                    "pastilleActuel":data.lvl[i].obstacles[j].pastille
                 };
                 if(obstacles[i][j].pastille != 0)
                 {
@@ -91,7 +94,8 @@ $.getJSON('lvl.json', function(data)
                         "pasY":Math.abs((data.lvl[i].obstacles[j].posY1-data.lvl[i].obstacles[j].posY2)/udontcare),
                         "pastille":data.lvl[i].obstacles[j].pastille,       
                         "pastilleX":data.lvl[i].obstacles[j].pastilleX,
-                        "pastilleY":data.lvl[i].obstacles[j].pastilleY
+                        "pastilleY":data.lvl[i].obstacles[j].pastilleY,
+                        "pastilleActuel":data.lvl[i].obstacles[j].pastille
                     };
                 }
             }   
@@ -168,12 +172,12 @@ function collisionsPastille(obstacles,nb)
 {
     for (i = 0; i < nb; i++) 
     {
-        if (obstacles[i].pastille!=0)
+        if (obstacles[i].pastilleActuel!=0)
         {
             if (!((cube.posX>=(obstacles[i].pastilleX+5) || ((cube.posY + 20 )<=obstacles[i].pastilleY)
              || (cube.posY>=(obstacles[i].pastilleY+5)) || ((cube.posX+20)<=obstacles[i].pastilleX))))
             {
-                obstacles[i].pastille=0;
+                obstacles[i].pastilleActuel=0;
             }
         }
     }
@@ -181,25 +185,26 @@ function collisionsPastille(obstacles,nb)
 
 function avantExplosion()
 {
-        nbTry+=1;
-        boom=1;
-        creation=0;
-        debris[0]={"posX":cube.posX,"posY":cube.posY};
-        debris[1]={"posX":cube.posX,"posY":cube.posY+5};
-        debris[2]={"posX":cube.posX,"posY":cube.posY+10};
-        debris[3]={"posX":cube.posX,"posY":cube.posY+15};
-        debris[4]={"posX":cube.posX+5,"posY":cube.posY};
-        debris[5]={"posX":cube.posX+5,"posY":cube.posY+5};
-        debris[6]={"posX":cube.posX+5,"posY":cube.posY+10};
-        debris[7]={"posX":cube.posX+5,"posY":cube.posY+15};
-        debris[8]={"posX":cube.posX+10,"posY":cube.posY};
-        debris[9]={"posX":cube.posX+10,"posY":cube.posY+5};
-        debris[10]={"posX":cube.posX+10,"posY":cube.posY+10};
-        debris[11]={"posX":cube.posX+10,"posY":cube.posY+15};
-        debris[12]={"posX":cube.posX+15,"posY":cube.posY};
-        debris[13]={"posX":cube.posX+15,"posY":cube.posY+5};
-        debris[14]={"posX":cube.posX+15,"posY":cube.posY+10};
-        debris[15]={"posX":cube.posX+15,"posY":cube.posY+15};
+    nbTry+=1;
+    boom=1;
+    creation=0;
+    
+    debris[0]={"posX":cube.posX,"posY":cube.posY};
+    debris[1]={"posX":cube.posX,"posY":cube.posY+5};
+    debris[2]={"posX":cube.posX,"posY":cube.posY+10};
+    debris[3]={"posX":cube.posX,"posY":cube.posY+15};
+    debris[4]={"posX":cube.posX+5,"posY":cube.posY};
+    debris[5]={"posX":cube.posX+5,"posY":cube.posY+5};
+    debris[6]={"posX":cube.posX+5,"posY":cube.posY+10};
+    debris[7]={"posX":cube.posX+5,"posY":cube.posY+15};
+    debris[8]={"posX":cube.posX+10,"posY":cube.posY};
+    debris[9]={"posX":cube.posX+10,"posY":cube.posY+5};
+    debris[10]={"posX":cube.posX+10,"posY":cube.posY+10};
+    debris[11]={"posX":cube.posX+10,"posY":cube.posY+15};
+    debris[12]={"posX":cube.posX+15,"posY":cube.posY};
+    debris[13]={"posX":cube.posX+15,"posY":cube.posY+5};
+    debris[14]={"posX":cube.posX+15,"posY":cube.posY+10};
+    debris[15]={"posX":cube.posX+15,"posY":cube.posY+15};
     
 }
 
@@ -228,7 +233,22 @@ function createCube(sol,c1,speed)
 {
     frame=0;
     inJump=0;
+    for (i = 0; i < nbObstacles[lvl]; i++) {
+        stopX[i]=1;
+        stopY[i]=1;
+    };
+    for (i = 0; i < nbObstacles[lvl]; i++) {
+        if (obstacles[lvl][i].pastille!=0)
+        {
+            obstacles[lvl][i].pastilleActuel=obstacles[lvl][i].pastille;
+        }
+        if (obstacles[lvl][i].oneShot==0)
+        {
+            obstacles[lvl][i].posX=obstacles[lvl][i].posX1;
+            obstacles[lvl][i].posY=obstacles[lvl][i].posY1;
+        }
 
+    }
     cube = {
             "color": c1,
             "posX": 0,
@@ -267,13 +287,27 @@ function drawObstacles(obstacles,nb)
                    obstacles[i].pasY=-obstacles[i].pasY;
                }
         }
-
-        if (obstacles[i].pastille==0)
+        else
         {
-            obstacles[i].posX+=obstacles[i].pasX;
-            obstacles[i].posY+=obstacles[i].pasY;
+             if (obstacles[i].posX>Math.max(obstacles[i].posX1,obstacles[i].posX2) ||
+                    obstacles[i].posX<Math.min(obstacles[i].posX1,obstacles[i].posX2))
+               {
+                   pasX[i]=0;
+               }
+               if (obstacles[i].posY>Math.max(obstacles[i].posY1,obstacles[i].posY2) ||
+                    obstacles[i].posY<Math.min(obstacles[i].posY1,obstacles[i].posY2))
+               {
+                   stopY[i]=0;
+               }
+
         }
-        if (obstacles[i].pastille!=0)
+
+        if (obstacles[i].pastilleActuel==0)
+        {
+            if(stopX[i]!=0){obstacles[i].posX+=obstacles[i].pasX;}
+            if(stopY[i]!=0){obstacles[i].posY+=obstacles[i].pasY;}
+        }
+        if (obstacles[i].pastilleActuel!=0)
         {
             ctx.beginPath();
             ctx.fillStyle = c2[lvl];

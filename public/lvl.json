@@ -1,30 +1,6 @@
-{   "nbLvl": 7,
+{   "nbLvl": 8,
     "lvl":[
-            {
-                "ciel":100,
-                "sol":300,
-                "speed":1,
-                "c1":"#F1AE00",
-                "c2":"#FF0012",
-                "gravity":2.5,
-                "nbObstacles":1,
-                "obstacles":[
-                {
-                    "oneShot":0,
-                    "posX1":600,
-                    "posX2":600,
-                    "posY1":130,
-                    "posY2":300,
-                    "width":50,
-                    "height":300,
-                    "frame":40,
-                    "pastille":1,
-                    "pastilleX":100,
-                    "pastilleY":240
-
-                }
-                ]
-            },
+                     
             {
                 "ciel":100,
                 "sol":300,
@@ -93,6 +69,7 @@
                 ]
                 
             },
+           
             {
                 "ciel":100,
                 "sol":300,
@@ -186,7 +163,31 @@
                 ]
             },
 
-         
+            {
+                "ciel":100,
+                "sol":300,
+                "speed":1,
+                "c1":"#F1AE00",
+                "c2":"#FF0012",
+                "gravity":2.5,
+                "nbObstacles":1,
+                "obstacles":[
+                {
+                    "oneShot":0,
+                    "posX1":600,
+                    "posX2":600,
+                    "posY1":130,
+                    "posY2":300,
+                    "width":50,
+                    "height":300,
+                    "frame":40,
+                    "pastille":1,
+                    "pastilleX":100,
+                    "pastilleY":240
+
+                }
+                ]
+            },
 
             {
                 "ciel":100,
@@ -232,6 +233,58 @@
                 }
 
                 ]
-            }
+            },{
+                "ciel":100,
+                "sol":300,
+                "speed":1,
+                "c1":"#5266F4",
+                "c2":"#FFFFFF",
+                "gravity":2.3,
+                "nbObstacles":3,
+                "obstacles":[
+                {
+                    "oneShot":0,
+                    "posX1":600,
+                    "posX2":600,
+                    "posY1":130,
+                    "posY2":300,
+                    "width":50,
+                    "height":300,
+                    "frame":30,
+                    "pastille":1,
+                    "pastilleX":100,
+                    "pastilleY":290
+
+                },
+                {
+                    "oneShot":0,
+                    "posX1":400,
+                    "posX2":400,
+                    "posY1":130,
+                    "posY2":300,
+                    "width":50,
+                    "height":300,
+                    "frame":20,
+                    "pastille":1,
+                    "pastilleX":300,
+                    "pastilleY":290
+
+                },
+                {
+                    "oneShot":0,
+                    "posX1":700,
+                    "posX2":700,
+                    "posY1":-200,
+                    "posY2":90,
+                    "width":50,
+                    "height":300,
+                    "frame":30,
+                    "pastille":1,
+                    "pastilleX":200,
+                    "pastilleY":290
+
+                }
+                ]
+            }    
     ]
  }   
