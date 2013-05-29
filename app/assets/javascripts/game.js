@@ -21,7 +21,7 @@ var width = canvas.width;
 var height = canvas.height;
 var lvl = 0;
 var baseSpeed = 10;
-var cube,nbLvl,inJump,i,j,boom=0,play=0;
+var cube,nbLvl,inJump,i,j,boom=0,play=0,gameEnd=1;
 var audio = document.getElementById('audio');
 var c1 = new Array();
 var c2 = new Array();
@@ -376,7 +376,7 @@ function testArrive()
     if(lvl>=nbLvl)
     {
         //audio.pause();
-        stopTheGame=0;
+        gameEnd=0;
         var div = document.getElementById('whereItHappens');
         div.innerHTML = "<br><br><p>Well done, only "+nbTry+" tries !</p>"+
         "<p>Now, enter your pseudo and then click on <code>submit</code></p>"+
@@ -410,7 +410,7 @@ function keydownControl(e)
             jump();
         break;
     }
-    if(stopTheGame!=0)
+    if(gameEnd!=0)
     {
         if (e.preventDefault) 
         {
