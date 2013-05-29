@@ -182,7 +182,7 @@
                     "height":300,
                     "frame":40,
                     "pastille":1,
-                    "pastilleX":100,
+                    "pastilleX":200,
                     "pastilleY":240
 
                 }
@@ -252,7 +252,7 @@
                     "height":300,
                     "frame":30,
                     "pastille":1,
-                    "pastilleX":100,
+                    "pastilleX":60,
                     "pastilleY":290
 
                 },
