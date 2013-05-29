@@ -1,5 +1,30 @@
-{   "nbLvl": 6,
+{   "nbLvl": 7,
     "lvl":[
+            {
+                "ciel":100,
+                "sol":300,
+                "speed":1,
+                "c1":"#F1AE00",
+                "c2":"#FF0012",
+                "gravity":2.5,
+                "nbObstacles":1,
+                "obstacles":[
+                {
+                    "oneShot":0,
+                    "posX1":600,
+                    "posX2":600,
+                    "posY1":130,
+                    "posY2":300,
+                    "width":50,
+                    "height":300,
+                    "frame":40,
+                    "pastille":1,
+                    "pastilleX":100,
+                    "pastilleY":240
+
+                }
+                ]
+            },
             {
                 "ciel":100,
                 "sol":300,
@@ -10,12 +35,14 @@
                 "nbObstacles":1,
                 "obstacles":[
                 {
+                    "oneShot":1,
                     "posX1":770,
                     "posX2":0,
                     "posY1":270,
                     "posY2":270,
                     "width":30,
                     "height":30,
+                    "pastille":0,
                     "frame":30
                 }
                 ]
@@ -31,30 +58,36 @@
                 "nbObstacles":3,
                 "obstacles":[
                 {
+                    "oneShot":1,
                     "width":50,
                     "height":50,
                     "posX1":400,
                     "posY1":250,
                     "posX2":400,
                     "posY2":250,
+                    "pastille":0,
                     "frame":50
                 },
                 {
+                    "oneShot":1,
                     "posX1":650,
                     "posX2":650,
                     "posY1":100,
                     "posY2":240,
                     "width":60,
                     "height":60,
+                    "pastille":0,
                     "frame":30
                 },
                 {
+                    "oneShot":1,
                     "posX1":250,
                     "posX2":250,
                     "posY1":100,
                     "posY2":240,
                     "width":60,
                     "height":60,
+                    "pastille":0,
                     "frame":30
                 }
                 ]
@@ -70,15 +103,18 @@
                 "nbObstacles":3,
                 "obstacles":[
                 {
+                    "oneShot":1,
                     "width":40,
                     "height":80,
                     "posX1":260,
                     "posY1":180,
                     "posX2":530,
                     "posY2":180,
+                    "pastille":0,
                     "frame":50
                 },
                 {
+                    "oneShot":1,
                     "posX":600,
                     "posX1":600,
                     "posX2":600,
@@ -86,15 +122,18 @@
                     "posY2":260,
                     "width":100,
                     "height":80,
+                    "pastille":0,
                     "frame":50
                 },
                 {
+                    "oneShot":1,
                     "posX1":200,
                     "posX2":200,
                     "posY1":260,
                     "posY2":260,
                     "width":40,
                     "height":80,
+                    "pastille":0,
                     "frame":50
                 }
                 ]
@@ -110,12 +149,14 @@
                 "nbObstacles":1,
                 "obstacles":[
                 {
+                    "oneShot":1,
                     "posX1":400,
                     "posX2":400,
                     "posY1":220,
                     "posY2":220,
                     "width":80,
                     "height":80,
+                    "pastille":0,
                     "frame":50
                 }
                 ]
@@ -132,12 +173,14 @@
                 "nbObstacles":1,
                 "obstacles":[
                 {
+                    "oneShot":1,
                     "posX1":550,
                     "posX2":550,
                     "posY1":220,
                     "posY2":220,
                     "width":70,
                     "height":60,
+                    "pastille":0,
                     "frame":50
                 }
                 ]
@@ -155,30 +198,36 @@
                 "nbObstacles":3,
                 "obstacles":[
                 {
+                    "oneShot":1,
                     "posX1":400,
                     "posX2":400,
                     "posY1":220,
                     "posY2":220,
                     "width":80,
                     "height":80,
+                    "pastille":0,
                     "frame":50
                 },
                 {
+                    "oneShot":1,
                     "posX1":150,
                     "posX2":150,
                     "posY1":220,
                     "posY2":220,
                     "width":80,
                     "height":80,
+                    "pastille":0,
                     "frame":50
                 },
                 {
+                    "oneShot":1,
                     "posX1":620,
                     "posX2":620,
                     "posY1":220,
                     "posY2":220,
                     "width":80,
                     "height":80,
+                    "pastille":0,
                     "frame":50
                 }
 

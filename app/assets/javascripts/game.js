@@ -59,6 +59,7 @@ $.getJSON('lvl.json', function(data)
                 udontcare = data.lvl[i].obstacles[j].frame;
                 obstacles[i][j]=
                 {
+                    "oneShot":data.lvl[i].obstacles[j].oneShot,
                     "posX":data.lvl[i].obstacles[j].posX1,
                     "posY":data.lvl[i].obstacles[j].posY1,
                     "width":data.lvl[i].obstacles[j].width,
@@ -69,8 +70,30 @@ $.getJSON('lvl.json', function(data)
                     "posY2":data.lvl[i].obstacles[j].posY2,
                     "frame":data.lvl[i].obstacles[j].frame,
                     "pasX":Math.abs((data.lvl[i].obstacles[j].posX1-data.lvl[i].obstacles[j].posX2)/udontcare),
-                    "pasY":Math.abs((data.lvl[i].obstacles[j].posY1-data.lvl[i].obstacles[j].posY2)/udontcare)
+                    "pasY":Math.abs((data.lvl[i].obstacles[j].posY1-data.lvl[i].obstacles[j].posY2)/udontcare),
+                    "pastille":data.lvl[i].obstacles[j].pastille,
                 };
+                if(obstacles[i][j].pastille != 0)
+                {
+                    obstacles[i][j]=
+                    {
+                        "oneShot":data.lvl[i].obstacles[j].oneShot,
+                        "posX":data.lvl[i].obstacles[j].posX1,
+                        "posY":data.lvl[i].obstacles[j].posY1,
+                        "width":data.lvl[i].obstacles[j].width,
+                        "height":data.lvl[i].obstacles[j].height,
+                        "posX1":data.lvl[i].obstacles[j].posX1,
+                        "posX2":data.lvl[i].obstacles[j].posX2,
+                        "posY1":data.lvl[i].obstacles[j].posY1,
+                        "posY2":data.lvl[i].obstacles[j].posY2,
+                        "frame":data.lvl[i].obstacles[j].frame,
+                        "pasX":Math.abs((data.lvl[i].obstacles[j].posX1-data.lvl[i].obstacles[j].posX2)/udontcare),
+                        "pasY":Math.abs((data.lvl[i].obstacles[j].posY1-data.lvl[i].obstacles[j].posY2)/udontcare),
+                        "pastille":data.lvl[i].obstacles[j].pastille,       
+                        "pastilleX":data.lvl[i].obstacles[j].pastilleX,
+                        "pastilleY":data.lvl[i].obstacles[j].pastilleY
+                    };
+                }
             }   
         }
         
@@ -102,6 +125,7 @@ function animate()
                 drawObstacles(obstacles[lvl],nbObstacles[lvl]);
                 collisionsObstacles(obstacles[lvl],nbObstacles[lvl]);
             }
+            collisionsPastille(obstacles[lvl],nbObstacles[lvl]);
             collisionsCiel();
             testArrive();
             infos();
@@ -137,6 +161,20 @@ function collisionsObstacles(obstacles,nb)
          || (cube.posY>=(obstacles[i].posY+obstacles[i].height)) || ((cube.posX+20)<=obstacles[i].posX))))
         {
            avantExplosion();
+        }
+    }
+}
+function collisionsPastille(obstacles,nb)
+{
+    for (i = 0; i < nb; i++) 
+    {
+        if (obstacles[i].pastille!=0)
+        {
+            if (!((cube.posX>=(obstacles[i].pastilleX+5) || ((cube.posY + 20 )<=obstacles[i].pastilleY)
+             || (cube.posY>=(obstacles[i].pastilleY+5)) || ((cube.posX+20)<=obstacles[i].pastilleX))))
+            {
+                obstacles[i].pastille=0;
+            }
         }
     }
 }
@@ -216,20 +254,34 @@ function drawObstacles(obstacles,nb)
 
         ctx.fillStyle = c2[lvl];
         ctx.fillRect(obstacles[i].posX,obstacles[i].posY,obstacles[i].width,obstacles[i].height);
-       
-        if (obstacles[i].posX>Math.max(obstacles[i].posX1,obstacles[i].posX2) ||
-             obstacles[i].posX<Math.min(obstacles[i].posX1,obstacles[i].posX2))
-        {
-            obstacles[i].pasX=-obstacles[i].pasX;
+       if(obstacles[i].oneShot!=0)
+       {
+            if (obstacles[i].posX>Math.max(obstacles[i].posX1,obstacles[i].posX2) ||
+                    obstacles[i].posX<Math.min(obstacles[i].posX1,obstacles[i].posX2))
+               {
+                   obstacles[i].pasX=-obstacles[i].pasX;
+               }
+               if (obstacles[i].posY>Math.max(obstacles[i].posY1,obstacles[i].posY2) ||
+                    obstacles[i].posY<Math.min(obstacles[i].posY1,obstacles[i].posY2))
+               {
+                   obstacles[i].pasY=-obstacles[i].pasY;
+               }
         }
-        if (obstacles[i].posY>Math.max(obstacles[i].posY1,obstacles[i].posY2) ||
-             obstacles[i].posY<Math.min(obstacles[i].posY1,obstacles[i].posY2))
+
+        if (obstacles[i].pastille==0)
         {
-            obstacles[i].pasY=-obstacles[i].pasY;
+            obstacles[i].posX+=obstacles[i].pasX;
+            obstacles[i].posY+=obstacles[i].pasY;
         }
-        obstacles[i].posX+=obstacles[i].pasX;
-        obstacles[i].posY+=obstacles[i].pasY;
-         
+        if (obstacles[i].pastille!=0)
+        {
+            ctx.beginPath();
+            ctx.fillStyle = c2[lvl];
+            ctx.arc(obstacles[i].pastilleX, obstacles[i].pastilleY, 5, 0, 2 * Math.PI);
+            ctx.closePath();
+            ctx.fill();
+        
+        }
     }
 }
 
