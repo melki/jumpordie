@@ -2,7 +2,7 @@
 <p><%= link_to "This", game_path  %> is the beta version of a little game developed in javascript using the HTML5 canvas.</p>
 <p>As it's still a beta game, new levels will be added every two or three days and the databases will be erased regularly...</p>
 <h2>News</h2>
- <% article = New.order("created_at ") %>
+ <% article = New.order("created_at DESC") %>
   <% i=1 %>
   <table class="table table-striped">
               <thead>
