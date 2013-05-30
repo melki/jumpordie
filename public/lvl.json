@@ -1,7 +1,45 @@
-{   "nbLvl": 8,
+{   "nbLvl": 10,
     "lvl":[
-                     
-            {
+           
+             {
+                "ciel":100,
+                "sol":300,
+                "speed":1.1,
+                "c1":"#5C00C1",
+                "c2":"#FFFFFF",
+                "gravity":1.9,
+                "nbObstacles":2,
+                "obstacles":[
+                {
+                    "oneShot":0,
+                    "posX1":340,
+                    "posX2":340,
+                    "posY1":220,
+                    "posY2":250,
+                    "width":120,
+                    "height":50,
+                    "pastille":1,
+                    "pastilleX":400,
+                    "pastilleY":290,
+                    "frame":10
+                },
+                {
+                    "oneShot":1,
+                    "posX1":700,
+                    "posX2":700,
+                    "posY1":220,
+                    "posY2":250,
+                    "width":50,
+                    "height":50,
+                    "pastille":0,
+                    "pastilleX":400,
+                    "pastilleY":290,
+                    "frame":20
+                }
+
+                ]
+            },
+{
                 "ciel":100,
                 "sol":300,
                 "speed":1,
@@ -136,6 +174,58 @@
                     "pastille":0,
                     "frame":50
                 }
+                ]
+            },
+
+            {
+                "ciel":100,
+                "sol":300,
+                "speed":0.5,
+                "c1":"#A30000",
+                "c2":"#705C88",
+                "gravity":1.8,
+                "nbObstacles":3,
+                "obstacles":[
+                {
+                    "oneShot":0,
+                    "posX1":200,
+                    "posX2":200,
+                    "posY1":150,
+                    "posY2":300,
+                    "width":50,
+                    "height":200,
+                    "pastille":1,
+                    "pastilleX":100,
+                    "pastilleY":270,
+                    "frame":10
+                },
+                {
+                    "oneShot":0,
+                    "posX1":400,
+                    "posX2":400,
+                    "posY1":150,
+                    "posY2":300,
+                    "width":50,
+                    "height":200,
+                    "pastille":1,
+                    "pastilleX":210,
+                    "pastilleY":270,
+                    "frame":10
+                },
+                {
+                    "oneShot":0,
+                    "posX1":600,
+                    "posX2":600,
+                    "posY1":150,
+                    "posY2":300,
+                    "width":50,
+                    "height":200,
+                    "pastille":1,
+                    "pastilleX":410,
+                    "pastilleY":270,
+                    "frame":10
+                }
+
                 ]
             },
 
