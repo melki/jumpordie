@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528111909) do
+ActiveRecord::Schema.define(:version => 20130530165425) do
+
+  create_table "news", :force => true do |t|
+    t.string   "titre"
+    t.string   "contenu"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "scores", :force => true do |t|
     t.string   "pseudo"

@@ -1,12 +1,17 @@
 Box::Application.routes.draw do
+  
+
   #pages
   get "pages/home"
   get "pages/game"
   get "pages/score"
+  get "pages/ajout"
 
   post "pages/score"
+  post "pages/ajout"
 
   match '/home', :to => 'pages#home'
+  match '/ajout', :to => 'pages#ajout'
   match '/game', :to => 'pages#game'
   match '/score', :to => 'pages#score'
   

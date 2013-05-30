@@ -4,7 +4,14 @@ class PagesController < ApplicationController
   end
 
   def game
-  	@titre = "Game"
+    @titre = "Game"
+  end
+
+  def ajout
+  	@titre = "Ajout"
+    @pass = params[:pass]
+    @title = params[:titre]
+    @contenu = params[:contenu]
   end
 
   def score

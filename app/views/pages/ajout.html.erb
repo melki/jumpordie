@@ -1,0 +1,16 @@
+<h1>Ajout de news</h1>
+<% if @pass == "News1993" %>
+ <% nouveau = New.new(:titre => @title, :contenu => @contenu) %>
+ <% nouveau.save %>
+<% end %>
+
+<%= form_tag("/ajout", :method => "post") do %>
+  
+	<%= password_field_tag 'pass',nil, :placeholder => "Your password", :required => true, :type => "password" %>
+  	<br>
+	<%= text_field_tag 'titre',nil, :placeholder => "Your title", :required => true %>
+  	<br>
+	<%= text_area_tag 'contenu',nil, :placeholder =>  "Your news here",:class => "input-xlarge", :rows => 5,:cols => 1000, :required => true %>
+  	<br>
+	 <%= submit_tag "Let's post this fucking news", :class => "btn" %>
+<% end %>

@@ -1,2 +1,28 @@
 <h1>Welcome</h1>
-<p>I am curently trying to develop a short game using HTML5/JS, have a look <%= link_to "Here", game_path  %></p>
+<p><%= link_to "This", game_path  %> is the beta version of a little game developed in javascript using the HTML5 canvas.</p>
+<p>As it's still a beta game, new levels will be added every two or three days and the databases will be erased regularly...</p>
+<h2>News</h2>
+ <% article = New.order("created_at ") %>
+  <% i=1 %>
+  <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Title</th>
+                  <th>Content</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for s in article %>
+                <tr>
+                  <td><%= i %></td>
+                  <td><%= s.created_at.strftime("%m/%d/%Y") %></td>
+                  <td><%= s.titre %></td>
+                  <td><%= s.contenu %></td>
+                </tr>
+                <% i = i + 1 %>
+                <% end %>
+               </tbody>
+            </table>
+
