@@ -1,5 +1,7 @@
 function load() {
-
+  FB.api('/me', function(response) {
+    alert(response["name"]);
+  });
 
 
     // fonction servant à animer le tout (mieux que setIntervalle)

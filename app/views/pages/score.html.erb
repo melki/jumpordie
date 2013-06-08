@@ -3,6 +3,7 @@
   <% if(request.referer.split('/').last=="game") %>
   <% nouveau = Score.new(:pseudo => @pseudo, :tries => @tries) %>
   <% nouveau.save %>
+  <%  %>
   <% end %>
   <% end %>
   <% score = Score.order("tries ") %>

@@ -29,7 +29,10 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
-    bootstrap-sass (2.3.1.0)
+    authlogic (3.3.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+    bootstrap-sass (2.3.1.2)
       sass (~> 3.2)
     builder (3.0.4)
     coffee-rails (3.2.2)
@@ -43,19 +46,22 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    facebooker (1.0.75)
+      json_pure (>= 1.0.0)
     hike (1.2.2)
     i18n (0.6.1)
     journey (1.0.4)
-    jquery-rails (2.2.1)
+    jquery-rails (3.0.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    json_pure (1.8.0)
     libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
-    multi_json (1.7.3)
+    multi_json (1.7.4)
     nokogiri (1.5.9)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -130,9 +136,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic
   bootstrap-sass (~> 2.3.1.0)
   coffee-rails (~> 3.2.1)
   execjs
+  facebooker
   jquery-rails
   pg
   rails (= 3.2.13)
